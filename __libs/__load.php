@@ -31,6 +31,18 @@ function signup($user ,$email,$pass,$phone){
 }
 
 
+
+function validate($username ,$password) {
+    if ($username == "dharshan@we.com" and $password == 'ip'){
+        return true;
+    }if ($username == "sagar@we.com" and $password == 'ss') {
+        return true;
+    }else{
+        return false;
+    }
+    
+}
+
 ?>
 
 
