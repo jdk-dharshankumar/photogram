@@ -23,7 +23,7 @@ $result = signup($user ,$email,$pass,$phone);
       <main class="flex-shrink-0">
       <div class="container">
         <h1 class="mt-5">sign in Suucccesful</h1>
-        <h1 class="mt-5"> for log in <a href="../login/_login.php">here</a></h1>
+        <br> <br><h1 class="mt-5"> for log in <a href=" <?echo $_SERVER['CONTEXT_DOCUMENT_ROOT']?>/photogram/login/index.php">here</a></h1>
       </div>
     </main>
 <? } 
