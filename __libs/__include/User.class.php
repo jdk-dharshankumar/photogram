@@ -1,14 +1,14 @@
 <?
 
-include_once 'database.class.php';
-include '../../login/_include_/__load.php';
+include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/photogram/__libs/__include/Database.class.php';
+include $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/photogram/__libs/__load.php';
 
 
 class user {
 
     public static function signup($user,$email,$pass,$phone) {
 
-        $pass= strrev(md5($pass));     //saving the pass in hash format,it is security through obscurity
+      $pass= strrev(md5($pass));     //saving the pass in hash format,it is security through obscurity
 
         $conn = Database::getconnection();
 
