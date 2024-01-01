@@ -1,6 +1,6 @@
 <?php 
    
-  include '__load.php';
+   include $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/photogram/__libs/__load.php';
 ?>
 <? 
 $result = false;
@@ -26,7 +26,7 @@ if(isset($_POST['email']) and isset($_POST['password'])){
  ?>
 
 
-<head><script src="assets/js/color-modes.js"></script>
+<head><script src="/photogram/__libs/assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,10 +38,11 @@ if(isset($_POST['email']) and isset($_POST['password'])){
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/photogram/__libs/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
 <style>
@@ -185,8 +186,8 @@ if(isset($_POST['email']) and isset($_POST['password'])){
 
     
 <main class="form-signin w-100 m-auto">
-  <form action ="_login.php" method = "post">
-    <img class="mb-4" src="ssdk.jpg" alt="" width="200" height="200" >
+  <form action ="index.php" method = "post">
+    <img class="mb-4" src="/photogram/__libs/assests/images/ssdk.jpeg" alt="" width="200" height="200" >
     <h1 class="h3 mb-3 fw-normal">Enter req details to Log in the World of <br> JD SAGAR</h1>
 
     <div class="form-floating">
@@ -208,7 +209,7 @@ if(isset($_POST['email']) and isset($_POST['password'])){
     
   </form>
 </main>
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/photogram/__libs/assets/dist/js/bootstrap.bundle.min.js"></script>
 
     
 
