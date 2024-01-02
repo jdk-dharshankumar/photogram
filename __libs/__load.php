@@ -1,5 +1,8 @@
 <? 
+include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/photogram/__libs/__include/Sessions.class.php';
+include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/photogram/__libs/__include/User.class.php';
 
+  Sessions::start();
 function signup($user ,$email,$pass,$phone){
 
   $servername = "localhost";
@@ -14,7 +17,7 @@ function signup($user ,$email,$pass,$phone){
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "INSERT INTO `isgn` (`username`, `email`, `password`, `phonenumber`)
+  $sql = "INSERT INTO `auth` (`username`, `email`, `password`, `phonenumber`)
   VALUES ('$user', '$email', '$pass', '$phone');";
   $result= false;
 
@@ -29,7 +32,6 @@ function signup($user ,$email,$pass,$phone){
   return $result;
 
 }
-
 
 
 function validate($username ,$password) {

@@ -18,15 +18,16 @@ class Sessions{
     }
 
     public static function get ($key,$default=false){
-        if(sessions::isset($key)){
-        return $_SERVER[$key];                  // to get the key
-    }else{
-        return $default;
-    }
+        if(Sessions::isset($key)){
+            return $_SESSION[$key];                  // to get the key
+        }else{
+            return $default;
+        }
     }
 
     public static function set($key,$value){
-        return $_SERVER[$key]=$value;         // to receive the value by the key
+        print_r("key:".$key,"value:".$value);
+        $_SESSION[$key]=$value;         // to receive the value by the key
 
     }
 }

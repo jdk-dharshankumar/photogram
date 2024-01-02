@@ -1,10 +1,9 @@
 <?
 
-include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/photogram/__libs/__include/Database.class.php';
-include $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/photogram/__libs/__load.php';
+include_once 'Database.class.php';
 
 
-class user {
+class User {
 
     public static function signup($user,$email,$pass,$phone) {
 
@@ -15,8 +14,7 @@ class user {
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-      
-        $sql = "INSERT INTO `isgn` (`username`, `email`, `password`, `phonenumber`)
+        $sql = "INSERT INTO `auth` (`username`, `email`, `password`, `phonenumber`)
         VALUES ('$user', '$email', '$pass', '$phone');";
         $result= false;
       
@@ -36,15 +34,15 @@ class user {
     public static function login ($user,$pass){
     
       $pass= strrev(md5($pass)); 
-      echo "pass:".$pass;
-      $query="SELECT `password`, `id` FROM `isgn` WHERE `username` = '$user'";
+     
+      $query="SELECT `password`, `id` FROM `auth` WHERE `username` = '$user'";
       $conn = Database::getconnection();
       $result=$conn->query($query);
       if ($result){
           $row=$result->fetch_assoc();
-          print($row);
+
           if($pass == $row['password']){
-            return $row;
+            return $user;
           }else{
             return false;
           }

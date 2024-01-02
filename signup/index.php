@@ -11,7 +11,7 @@ $user = $_POST['User'];
 $email = $_POST['email'];
 $pass = $_POST['pass'];
 $phone = $_POST['phone'];
-$result = signup($user ,$email,$pass,$phone);
+$result = User::signup($user ,$email,$pass,$phone);
 //$signup= true;
 }
 ?>   
@@ -23,7 +23,7 @@ $result = signup($user ,$email,$pass,$phone);
       <main class="flex-shrink-0">
       <div class="container">
         <h1 class="mt-5">sign in Suucccesful</h1>
-        <br> <br><h1 class="mt-5"> for log in <a href=" <?echo $_SERVER['CONTEXT_DOCUMENT_ROOT']?>/photogram/login/index.php">here</a></h1>
+        <br> <br><h1 class="mt-5"> for log in <a href=" /photogram/login/index.php">here</a></h1>
       </div>
     </main>
 <? } 
