@@ -41,7 +41,7 @@ class User {
       
       if ($result){
           $row=$result->fetch_assoc();
-          print_r($row);
+          
 
           if($pass == $row['password']){
             return $user;
