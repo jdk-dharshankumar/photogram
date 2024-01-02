@@ -4,11 +4,11 @@
 ?>
 <? 
 $result = false;
-if(isset($_POST['email']) and isset($_POST['password'])){
-  $username = $_POST['email'];
+if(isset($_POST['Username']) and isset($_POST['password'])){
+  $username = $_POST['Username'];
   $password = $_POST['password'];
 
-  $result = validate($username,$password);
+  $result = User::login($username,$password);
 }
 ?>
 
@@ -191,8 +191,8 @@ if(isset($_POST['email']) and isset($_POST['password'])){
     <h1 class="h3 mb-3 fw-normal">Enter req details to Log in the World of <br> JD SAGAR</h1>
 
     <div class="form-floating">
-      <input name = "email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+      <input name = "Username" type="text" class="form-control" id="floatingInput" placeholder="Username">
+      <label for="floatingInput">Username</label>
     </div>
     <div class="form-floating">
       <input name = "password" type="password" class="form-control" id="floatingPassword" placeholder="Password">

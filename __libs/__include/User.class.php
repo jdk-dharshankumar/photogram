@@ -38,8 +38,10 @@ class User {
       $query="SELECT `password`, `id` FROM `auth` WHERE `username` = '$user'";
       $conn = Database::getconnection();
       $result=$conn->query($query);
+      
       if ($result){
           $row=$result->fetch_assoc();
+          print_r($row);
 
           if($pass == $row['password']){
             return $user;
