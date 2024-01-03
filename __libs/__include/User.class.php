@@ -10,7 +10,7 @@ class User {
       // $pass= strrev(md5($pass));     //saving the pass in hash format,it is security through obscurity
 
       $options=['cost'=> 8];
-      $pass=password_hash($pass,PASSWORD_BCRYPT,$options);
+      $pass=password_hash($pass,PASSWORD_BCRYPT,$options);    //crypto-encoding
         $conn = Database::getconnection();
 
         if ($conn->connect_error) {
@@ -46,7 +46,7 @@ class User {
           
 
           // if($pass == $row['password']){
-            if(password_verify($pass, $row['password'])){
+            if(password_verify($pass, $row['password'])){     //crypto_decoding and verfying the password
             return $user;
           }else{
             return false;
