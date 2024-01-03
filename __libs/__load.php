@@ -4,6 +4,11 @@ include_once $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/photogram/__libs/__include/User
 
 Sessions::start();
 
+function load_temp($name){
+    
+    include "/photogram/__libs/__templates/_$name.php";
+}
+
 ?>
 
 

@@ -7,8 +7,10 @@ class User {
 
     public static function signup($user,$email,$pass,$phone) {
 
-      $pass= strrev(md5($pass));     //saving the pass in hash format,it is security through obscurity
+      // $pass= strrev(md5($pass));     //saving the pass in hash format,it is security through obscurity
 
+      $options=['cost'=> 8];
+      $pass=password_hash($pass,PASSWORD_BCRYPT,$options);
         $conn = Database::getconnection();
 
         if ($conn->connect_error) {
@@ -33,7 +35,7 @@ class User {
 
     public static function login ($user,$pass){
     
-      $pass= strrev(md5($pass)); 
+      // $pass= strrev(md5($pass)); 
      
       $query="SELECT `password`, `id` FROM `auth` WHERE `username` = '$user'";
       $conn = Database::getconnection();
@@ -43,7 +45,8 @@ class User {
           $row=$result->fetch_assoc();
           
 
-          if($pass == $row['password']){
+          // if($pass == $row['password']){
+            if(password_verify($pass, $row['password'])){
             return $user;
           }else{
             return false;

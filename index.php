@@ -1,11 +1,12 @@
 <?php 
-  include 'libs/load.php';
-?>
+  include $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/photogram/__libs/__load.php';
+  ?>;
+
 
 
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="/app/assets/js/color-modes.js"></script>
+  <head><script src="photogram/__libs/assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,9 +17,11 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/photogram/__libs/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -180,7 +183,7 @@
 <? load_temp('_photogram'); ?>
 </main>
 <? load_temp('_footer'); ?>
-<script src="/app/assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/photogram/__libs/assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>
