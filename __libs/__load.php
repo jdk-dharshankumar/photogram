@@ -6,7 +6,7 @@ Sessions::start();
 
 function load_temp($name){
     
-    include "/photogram/__libs/__templates/_$name.php";
+    include "__templates/$name.php";
 }
 
 ?>
