@@ -11,15 +11,20 @@ if(isset($_GET['logout'])){
 
 if(Sessions::get('is_loggedin')){
     $username=Sessions::get('session_user');   // to check sessions is already in use or already created
-    print("welcome back,[$username]");
+    
+    $userobj= new User ($username);
+    print("\n welcome back,".$userobj-> getBio());
+    print("\n firstname:".$userobj-> getFirstname());
+    $userobj->setFirstname("Dharshan");
     $result=$username;
 
 }else{
-    $user = "sagarjd";
-    $pass = "ss18jd12";
+    $user = "dharshan";
+    $pass = "password";
     $result = User::login($user,$pass);
+    
     if($result){
-        echo 'login succesful';
+        echo 'login succesful'.$user;
         Sessions::set('is_loggedin',true);          // to inform login is succseful
         Sessions::set('session_user',$result);
     }else{
