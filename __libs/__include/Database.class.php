@@ -8,11 +8,11 @@ class Database{
     public static function getconnection(){
 
         if (Database::$con == NULL){
-            $servername = "localhost";
-            $username = "root";
-            $password = "Sridharsh@12";
-            $dbname = "_php_conn";
-          
+            $servername = get_config('db_server');
+            $username = get_config('db_username');
+            $password = get_config('db_password');
+            $dbname = get_config('db_name');
+
             $connction = new mysqli($servername, $username, $password, $dbname);
           
             if ($connction->connect_error) {

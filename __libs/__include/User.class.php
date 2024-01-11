@@ -5,6 +5,8 @@ include_once 'Database.class.php';
 
 class User {
 
+    
+
     public static function signup($user,$email,$pass,$phone) {
 
       // $pass= strrev(md5($pass));     //saving the pass in hash format,it is security through obscurity
