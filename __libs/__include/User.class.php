@@ -81,7 +81,7 @@ class User {
         $this->conn = Database::getConnection();
         $this->username = $username;
         // $this->id = null;
-        $sql = "SELECT `id` FROM `auth` WHERE `username`= '$username' LIMIT 1";
+        $sql = "SELECT `id` FROM `auth` WHERE `username`= '$username'OR `id` = '$username' LIMIT 1";
         
         $result = $this->conn->query($sql);
         
