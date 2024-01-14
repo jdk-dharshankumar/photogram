@@ -32,7 +32,27 @@ class UserSession
     public static function authorize($token)
     {
         $sess = new UserSession($token);
+        try {
+            $session = new UserSession($token);
+            if (isset($_SERVER['REMOTE_ADDR']) and isset($_SERVER["HTTP_USER_AGENT"])) {
+                if ($session->isValid() and $session->isActive()) {
+                    if ($_SERVER['REMOTE_ADDR'] == $session->getIP()) {
+                        if ($_SERVER['HTTP_USER_AGENT'] == $session->getUserAgent()) {
+                            return true;
+                        } else throw new Exception("User agent does't match");
+                    } else throw new Exception("IP does't match");
+                } else {
+                    $session->removeSession();
+                    throw new Exception("Invalid session");
+                }
+            } else throw new Exception("IP and User_agent is null");
+        } catch (Exception $e) {
+            return false;
+        }
     }
+
+
+    
 
     public function __construct($token)
     {
@@ -62,17 +82,43 @@ class UserSession
      */
     public function isValid()
     {
+        if (isset($this->data['login_time'])) {
+            $login_time = DateTime::createFromFormat('Y-m-d H:i:s', $this->data['login_time']);
+            if (3600 > time() - $login_time->getTimestamp()) {
+                return true;
+            } else {
+                return false;
+            }
+        } else throw new Exception("login time is null");
+
     }
 
     public function getIP()
     {
+        return isset($this->data["ip"]) ? $this->data["ip"] : false;
     }
+
+    public function isActive()
+    {
+        if (isset($this->data['active'])) {
+            return $this->data['active'] ? true : false;
+        }
+    }
+
 
     public function getUserAgent()
     {
+        return isset($this->data["user_agent"]) ? $this->data["user_agent"] : false;
     }
 
     public function deactivate()
     {
+        if (!$this->conn)
+            $this->conn = Database::getConnection();
+        $sql = "UPDATE `session` SET `active` = 0 WHERE `uid`=$this->uid";
+
+        return $this->conn->query($sql) ? true : false;
+
     }
+
 }
